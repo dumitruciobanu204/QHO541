@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/nav.css">    
+    <title>Home</title>
+</head>
+<body>
+
+    <%- include('./partials/nav.ejs') %>   
+
+    <div class="container" id="movieContainer">
+        <% if (movie.length > 0) { %>
+            <% movie.forEach(movie => { %>
+                <div class="card">
+                    <form action="/add-to-basket" method="POST">
+                        <input type="hidden" name="price" value="<%= movie.Price %>">
+                        <a href="/more?id=<%= encodeURIComponent(movie.Title) %>">
+                            <img src="img/<%= movie.Image %>" alt="<%= movie.Title %>">
+                            <div class="info">
+                                <h3><%= movie.Title %></h3>
+                                <p>In Stock: <%= movie.Quantity %></p>
+                                <p>Price: <%= movie.Price %></p>
+                            </div>
+                        </a>
+                        <button type="submit" name="title" value="<%= movie.Title %>" class="add-to-basket-btn">Add to Basket</button>
+                    </form>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <h3>No movies to display.</h3>
+        <% } %>
+    </div>
+    
+    <script src="/js/addToBasket.js"></script>
+    
+</body>
+</html>

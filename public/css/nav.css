@@ -1,0 +1,48 @@
+nav {
+    position: relative;
+    background-color: #333;
+    color: #fff;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 55px;
+}
+
+.nav-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: calc(100% - 40px);
+}
+
+.home-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.right-buttons {
+    display: flex;
+}
+
+.nav-container button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.nav-container button:last-child {
+    margin-right: 0;
+}

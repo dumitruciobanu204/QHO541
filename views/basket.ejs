@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/basket.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <title>Basket</title>
+</head>
+<body>
+
+    <%- include('./partials/nav.ejs') %>   
+
+    <h1>Basket</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let grandTotal = 0; %>
+            <% basket.forEach(item => { %>
+                <tr>
+                    <td><%= item.title %></td>
+                    <td class="quantity-buttons">
+                        <form action="/decrease-quantity" method="POST">
+                            <input type="hidden" name="title" value="<%= item.title %>">
+                            <button type="submit">-</button>
+                        </form>
+                        <%= item.quantity %>
+                        <form action="/increase-quantity" method="POST" class="increase-quantity-form">
+                            <input type="hidden" name="title" value="<%= item.title %>">
+                            <button type="submit" class="increase">+</button>
+                        </form>
+                        <form action="/remove-from-basket" method="POST">
+                            <input type="hidden" name="title" value="<%= item.title %>">
+                            <button type="submit" class="remove-from-basket-button">Remove from Basket</button>
+                        </form>
+                    </td>
+                    <td>$<%= item.totalPrice.toFixed(2) %></td>
+                </tr>
+                <% grandTotal += item.totalPrice; %>
+            <% }); %>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><strong>Grand Total:</strong></td>
+                <td colspan="1"><strong>$<%= grandTotal.toFixed(2) %></strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <div class="button-container">
+        <form id="clearBasketForm" action="/clear-basket" method="POST">
+            <button type="submit" class="clear-basket-button">Clear Basket</button>
+        </form>
+        <a href="/checkout"><button type="button" class="checkout-button">Checkout</button></a>
+    </div>
+
+
+    <script src="/js/clearBasket.js"></script>
+</body>
+</html>
