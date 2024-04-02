@@ -20,7 +20,7 @@ Before running this application, ensure that you have the following installed on
 - npm (Node Package Manager): Comes bundled with Node.js installation.
 - MongoDB Atlas account.
 - MongoDB Atlas connection string.
-
+- Studio3T
 
 ## Installation
 
