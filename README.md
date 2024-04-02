@@ -35,10 +35,12 @@ Before running this application, ensure that you have the following installed on
 
 ## Configuration
 
-
-1. Obtain your MongoDB Atlas connection string from the MongoDB Atlas dashboard.
-- MONGODB_URI=your_connection_string_here
-2. Navigate to the root directory of your project and open the .env file using any text editor you prefer. Then, insert your MongoDB Atlas connection string according to the provided format.
+1. Login to cloud.mongodb.com.
+2. Build a new cluster, and add a new collection 'MoviesData' to it. 
+3. Obtain your MongoDB Atlas connection string from the MongoDB Atlas dashboard.
+4. Using MongoDB Compass, connect to the newly deployed cluster.
+5. Import the CSV file provided in the database folder to the MoviesData collection using the MongoDB Compass interface.
+6. Navigate to the root directory of the project and open the .env file using any text editor you prefer. Then, insert your MongoDB Atlas connection string according to the provided format.
 - MONGODB_URI=your_connection_string_here
 
 
